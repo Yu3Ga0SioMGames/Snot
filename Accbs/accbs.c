@@ -4,10 +4,16 @@ thread_local int64_t error = 0; // код ошибки
 
 bool str_is_matching_pair(char open, char close)                      // Используем константу BRACKETS для проверки соответствия
 {
-	char *open_pos = strchr(BRACKETS, open);                          // открытые скобки
-	char *close_pos = strchr(BRACKETS, close);                        // закрытые скобки
+	char *open_pos = strchr(OPENING_BRACKETS, open);
+	/// Найти индексы открывающей и закрывающей скобок в их строках:
+	char *close_pos = strchr(CLOSING_BRACKETS, close);
 
-	return (open_pos && close_pos && (close_pos - open_pos) == 1);
+	/// Если обе скобки найдены, проверим, соответствуют ли их индексы друг другу:
+	if(open_pos && close_pos) {
+		return (open_pos - OPENING_BRACKETS) == (close_pos - CLOSING_BRACKETS);
+	}
+
+	return false;  // вернуть "false", если соответствие не найдено
 }
 
 /// Функция "str_print" печатает ЛЮБУЮ строку, а в параметры принимает указатель на строку:
@@ -31,33 +37,36 @@ void str_accbs(const char *str)
 	/// Создаём стёк длиной, равной длине строки, и переменную "top", которая будет указывать на вершину стёка:
 	size_t length = strlen(str);                                                      // узнаём длину поолученной строки
 	char *stack = (char *)malloc(length);                                             // создаем стёк для хранения открывающих скобок
+	if(stack == NULL) {
+		++error;
+
+		return;                                                                       // возращаем функцию
+	}
+
 	int64_t top = -1;                                                                 // инициализируем вершину стёка
 
-	printf("The text read:\n\n```\n");                                                // пользовательский текст, так, Для удобства
+	printf("The Text Read:\n\n```\n");                                                // пользовательский текст, так, Для удобства
 
 	for(size_t i = 0; i < length; ++i) {                                              // перебираем всю строку
 		printf("%c", str[i]);                                                         // печатаем всё, что успели прочитать
-		if(strchr(BRACKETS, str[i])) {                                                // добавляем все виды открывающих скобок в стёк
-			if(strchr(OPENING_BRACKETS, str[i])) {
-				stack[++top] = str[i];
-			} else {                                                                  // проверяем их закрытие
-				if(top == -1) {                                                       // проверяем, не пуст ли стёк
-					++error;                                                          // код ошибки
-					printf("\n```\n\nError Code = %lld\n\n", error);                  // печатаем какой-то текст
-					str_free_str(stack);                                              // освобождаем память
+		if(strchr(OPENING_BRACKETS, str[i])) {
+			stack[++top] = str[i];
+		} else if(strchr(CLOSING_BRACKETS, str[i])) {                                 // проверяем их закрытие
+			if(top == -1) {                                                           // проверяем, не пуст ли стёк
+				++error;                                                              // код ошибки
+				printf("\n```\n\nError Code = %lld\n\n", error);                      // печатаем какой-то текст
+				str_free_str(stack);                                                  // освобождаем память
 
-					return;                                                           // возращаем функцию
-				}
+				return;                                                               // возращаем функцию
+			}
 
-				char open_brace = stack[top--];                                       // извлекаем верхний элемент из стёка
-				if(!str_is_matching_pair(open_brace, str[i])) {                       // проверяем соответствие открывающей и закрывающей скобок
-					++error;                                                          // код ошибки
-					printf("\n```\n\nError Code = %lld\n\n", error);                  // печатаем какой-то текст
-					str_free_str(stack);                                              // освобождаем память
+			char open_brace = stack[top--];                                           // извлекаем верхний элемент из стёка
+			if(!str_is_matching_pair(open_brace, str[i])) {                           // проверяем соответствие открывающей и закрывающей скобок
+				++error;                                                              // код ошибки
+				printf("\n```\n\nError Code = %lld\n\n", error);                      // печатаем какой-то текст
+				str_free_str(stack);                                                  // освобождаем память
 
-					return;                                                           // возращаем функцию
-				}
-
+				return;                                                               // возращаем функцию
 			}
 		}
 	}
@@ -152,7 +161,7 @@ char str_is_delimiter(char symbol)
 }
 
 /// Функция для разделения строки на подстроки:
-char **str_split_str(const char *str, size_t *num_tokens) // "str" - это входная строка, "num_tokens" - это указатель на количество токенов
+char **str_split_str(const char *str, size_t *num_tokens)   // "str" - это входная строка, "num_tokens" - это указатель на количество токенов
 {
 	size_t length = strlen(str);                          // длина строки "str"
 	char **tokens = NULL;                                 // массив(Двойной указатель) для хранения токенов
