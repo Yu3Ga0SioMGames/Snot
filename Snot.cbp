@@ -31,17 +31,34 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Accbs/Tests/test.c">
+		<Unit filename="accbs/accbs.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Accbs/Tests/test.h" />
-		<Unit filename="Accbs/accbs.c">
+		<Unit filename="accbs/accbs.h" />
+		<Unit filename="accbs/test/test.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Accbs/accbs.h" />
+		<Unit filename="accbs/test/test.h" />
+		<Unit filename="file_work/file_work.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="file_work/file_work.h" />
+		<Unit filename="file_work/test/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="file_work/test/test.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main_common.h" />
+		<Unit filename="split_tokens/split_tokens.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="split_tokens/split_tokens.h" />
+		<Unit filename="split_tokens/test/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="split_tokens/test/test.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

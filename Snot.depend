@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1729633175 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
-	"Accbs/Tests/test.h"
+1730836140 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+	"split_tokens/test/test.h"
 
-1730499668 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
+1730665995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
 	"accbs.h"
 
-1730484639 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.h
+1730665663 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.h
 	<ctype.h>
 	<stdio.h>
 	<stdlib.h>
@@ -14,9 +14,64 @@
 	<string.h>
 	<threads.h>
 
-1730413771 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/Tests/test.c
+1730666540 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/Tests/test.c
 	"test.h"
 
 1729633100 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/Tests/test.h
 	"../accbs.h"
+
+1730744649 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/accbs/accbs.c
+	"accbs.h"
+
+1730742991 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/accbs/accbs.h
+	"../main_common.h"
+	"../file_work/file_work.h"
+	"../file_work/test/test.h"
+
+1730675771 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/common/common.c
+	"common.h"
+
+1730676080 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/common/common.h
+
+1730755673 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/accbs/test/test.c
+	"test.h"
+
+1730755935 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/accbs/test/test.h
+	"../accbs.h"
+
+1730754558 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/file_work/file_work.c
+	"file_work.h"
+
+1730759029 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/file_work/file_work.h
+	"../main_common.h"
+
+1730755673 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/file_work/test/test.c
+	"test.h"
+
+1730755935 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/file_work/test/test.h
+	"../file_work.h"
+
+1730835795 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/split_tokens/split_tokens.c
+	"split_tokens.h"
+
+1730835795 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/split_tokens/split_tokens.h
+	"../main_common.h"
+	"../accbs/accbs.h"
+	"../accbs/test/test.h"
+
+1730757784 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/split_tokens/test/test.h
+	"../split_tokens.h"
+
+1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/split_tokens/test/test.c
+	"test.h"
+
+1730741528 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main_common.h
+	<ctype.h>
+	<stdio.h>
+	<stddef.h>
+	<stdint.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<threads.h>
 
