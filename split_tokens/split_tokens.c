@@ -157,41 +157,45 @@ char str_is_delimiter(char symbol)
 */
 Token *str_create_token(char token_type, void *data)      // функция для создания токена указанного типа ("token_type") с данными ("token_data")
 {
-	Token *token = (Token *)malloc(sizeof(Token));
-	if(token) {
-		token->token_type = token_type;
-		if(strchr(TOKEN_TYPE_WITH_DATA, token_type)) {
+	Token *token = (Token *)malloc(sizeof(Token));        // объявляем переменную "token", которая хранит указатель на выделенную память
+	if(token) {                                           // если память успешно выделена
+		token->token_type = token_type;                   // присваиваем значение параметра "token_type" полю "token_type" структуры "Token"
+		if(strchr(TOKEN_TYPE_WITH_DATA, token_type)) {    // проверяем, является ли "token_type" одним из типов, указанных в строке "TOKEN_TYPE_WITH_DATA"
+			/*
+			    Копирование данных "token_data" и присваивание указателя на дублированные данные полю "token_data",
+			    "strdup()" выделяет память и копирует строку "token_data" в новую область памяти:
+			*/
 			token->token_data = strdup((char *)data);
 		} else {
-			token->token_data = NULL;
+			token->token_data = NULL;                     // иначе, передаём "ничего"("NULL") в "token->token_data"
 		}
 	}
 
-	return token;
+	return token;                                         // возвращаем указатель на созданный токен
 }
 
 /// Смысл и принцип работы функции - эта функция создает токен типа 'L'(Левая скобка) без данных:
 Token *str_create_token_lp()                              // функция для создания токена типа "LP" ("Left Parenthesis")
 {
-	return str_create_token('L', NULL);
+	return str_create_token('L', NULL);                   // создаём необходимый токен, с помощью необходимой функции
 }
 
 /// Смысл и принцип работы функции - эта функция создает токен типа 'R'(Правая скобка) без данных:
 Token *str_create_token_rp()                              // функция для создания токена типа "RP" ("Right Parenthesis")
 {
-	return str_create_token('R', NULL);
+	return str_create_token('R', NULL);                   // создаём необходимый токен, с помощью необходимой функции
 }
 
 /// Смысл и принцип работы функции - эта функция создает токен типа 'S'(Символ) с заданными данными:
 Token *str_create_token_sym(const char *data)             // функция для создания токена указанного типа ("'S' - SYMBOL") с заданной ("token_data")
 {
-	return str_create_token('S', (void *)data);
+	return str_create_token('S', (void *)data);           // создаём необходимый токен, с помощью необходимой функции
 }
 
 /// Смысл и принцип работы функции - эта функция создает токен типа 'V'(Значение) с заданными данными:
 Token *str_create_token_val(const char *data)             // функция для создания токена указанного типа ("'V' - VALUE") с заданной ("token_data")
 {
-	return str_create_token('V', (void *)data);
+	return str_create_token('V', (void *)data);           // создаём необходимый токен, с помощью необходимой функции
 }
 
 /*
@@ -200,12 +204,13 @@ Token *str_create_token_val(const char *data)             // функция дл
 */
 void str_free_token2(Token *token)
 {
-	if(token) {
+	if(token) {                                           // проверяем на существование токена
+		/// Проверяем, что тип токена входит в строку:
 		if(strchr(TOKEN_TYPE_WITH_DATA, token->token_type)) {
-			free(token->token_data);
+			free(token->token_data);                      // освобождаем память, выделенную под данные токена
 		}
 
-		free(token);
+		free(token);                                      // освобождаем память, выделенную под сам токен
 	}
 }
 
@@ -219,28 +224,54 @@ void str_free_token2(Token *token)
 */
 Token **str_convert_tokens(const char **input_tokens, size_t num_tokens, size_t *num_of_converted_tokens)
 {
+	/*
+	    Выделяем память для массива токенов типа "Token *",
+	    Размер выделяемой памяти равен количеству токенов("num_tokens") умноженному на размер указателя на токен "(sizeof(Token *))",
+	    Указатель на выделенную память сохраняется в переменной "converted_tokens":
+	*/
 	Token **converted_tokens = (Token **)malloc(num_tokens * sizeof(Token *));
-	*num_of_converted_tokens = 0;
-	if(!converted_tokens) {
-		return NULL;
+	*num_of_converted_tokens = 0;                         // объявляем переменную подсчета количества успешно преобразованных токенов
+	if(!converted_tokens) {                               // проверяем успешность выделения памяти
+		return NULL;                                      // возращаем "NULL"
 	}
 
-	for(size_t i = 0; i < num_tokens; ++i) {
-		if (strcmp(input_tokens[i], "(") == 0) {
+	for(size_t i = 0; i < num_tokens; ++i) {              // проходим по каждому входному токену
+		if(strcmp(input_tokens[i], "(") == 0) {           // проверяем, является ли текущий входной токен символом '('
+			/*
+			    Вызываем функцию "str_create_token_lp", которая создает токен левой скобки,
+			    и указатель на этот токен сохраняется в массиве "converted_tokens" под индексом текущего элемента 'i':
+			*/
 			converted_tokens[i] = str_create_token_lp();
-		} else if(strcmp(input_tokens[i], ")") == 0) {
+		} else if(strcmp(input_tokens[i], ")") == 0) {    // проверяем, является ли текущий входной токен символом ')'
+			/*
+			    Вызываем функцию "str_create_token_rp", которая создает токен левой скобки,
+			    и указатель на этот токен сохраняется в массиве "converted_tokens" под индексом текущего элемента 'i':
+			*/
 			converted_tokens[i] = str_create_token_rp();
+
+			/*
+			    Проверяем, является ли текущий входной токен числовым значением
+				(То есть, если первый символ токена является цифрой или если токен начинается с минусового знака, за которым следует цифра:
+			*/
 		} else if(isdigit(input_tokens[i][0]) || (input_tokens[i][0] == '-' && isdigit(input_tokens[i][1]))) {
+			/*
+			    Вызываем функцию "str_create_token_val", которая создает токен левой скобки,
+			    и указатель на этот токен сохраняется в массиве "converted_tokens" под индексом текущего элемента 'i':
+			*/
 			converted_tokens[i] = str_create_token_val(input_tokens[i]);
-		} else {
+		} else {                                          // в противном случаи
+			/*
+			    Вызываем функцию "str_create_token_sym()", которая создает токен левой скобки,
+			    и указатель на этот токен сохраняется в массиве "converted_tokens" под индексом текущего элемента 'i':
+			*/
 			converted_tokens[i] = str_create_token_sym(input_tokens[i]);
 		}
-		if(converted_tokens[i]) {
-			(*num_of_converted_tokens)++;
+		if(converted_tokens[i]) {                         // проверяем, успешно ли был создан токен
+			(*num_of_converted_tokens)++;                 // увеличиваем счетчик, успешно преобразованных токенов
 		}
 	}
 
-	return converted_tokens;
+	return converted_tokens;                              // возращаем указатель на массив преобразованных токенов
 }
 
 /*
@@ -250,25 +281,25 @@ Token **str_convert_tokens(const char **input_tokens, size_t num_tokens, size_t 
 */
 void str_print_tokens2(Token **tokens, size_t num_tokens) // функция для необходимого вывода
 {
-	for(size_t i = 0; i < num_tokens; ++i) {
-		Token *token = tokens[i];
+	for(size_t i = 0; i < num_tokens; ++i) {              // проходим по каждому токену в массиве
+		Token *token = tokens[i];                         // получаем текущий токен из массива "tokens" и присваиваем указатель на этот токен переменной "token"
 
-		if(token->token_type == 'L') {
-			printf("LP");
-		} else if(token->token_type == 'R') {
-			printf("RP");
-		} else if(token->token_type == 'S') {
-			printf("SYM[%s]", (char *)token->token_data);
-		} else if(token->token_type == 'V') {
-			printf("VAL[%s]", (char *)token->token_data);
+		if(token->token_type == 'L') {                    // проверяем, является ли тип текущего токена левой скобкой
+			printf("LP");                                 // выводим строку
+		} else if(token->token_type == 'R') {             // проверяем, является ли тип текущего токена правой скобкой
+			printf("RP");                                 // выводим строку
+		} else if(token->token_type == 'S') {             // проверяем, является ли тип текущего токена символом
+			printf("SYM[%s]", (char *)token->token_data); // выводим строку
+		} else if(token->token_type == 'V') {             // проверяем, является ли тип текущего токена значением
+			printf("VAL[%s]", (char *)token->token_data); // выводим строку
 		}
 
-		if(i < num_tokens - 1) {
-			printf(", ");
+		if(i < num_tokens - 1) {                          // проверяем, не является ли текущий токен последним в массиве
+			printf(", ");                                 // произвольный вывод
 		}
 	}
 
-	printf("\n\n");
+	printf("\n\n");                                       // произвольный вывод
 }
 
 /*
@@ -278,9 +309,9 @@ void str_print_tokens2(Token **tokens, size_t num_tokens) // функция дл
 */
 void str_free_tokens2(Token **tokens, size_t num_tokens)  // функция для освобождения памяти, веделенной под массив токенов структуры "Token" и сами токены
 {
-	for(size_t i = 0; i < num_tokens; ++i) {
-		str_free_token2(tokens[i]);
+	for(size_t i = 0; i < num_tokens; ++i) {              // проходим по каждому токену в массиве
+		str_free_token2(tokens[i]);                       // освобождаем память выделенную под токен
 	}
 
-	free(tokens);
+	free(tokens);                                         // jсвобождаем память, выделенную под сам массив указателей на токены
 }
