@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1730836140 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1730987845 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"split_tokens/test/test.h"
 
 1730665995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
@@ -74,4 +74,36 @@
 	<stdbool.h>
 	<string.h>
 	<threads.h>
+
+1730985995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/container/container.c
+	"container.h"
+
+1730986704 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/container/container.h
+	<stddef.h>
+	<stdint.h>
+
+1730984622 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/list/list.c
+	"list.h"
+
+1730984638 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/list/list.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	"../container/container.h"
+
+1730987734 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/container/test/test.c
+	<stdint.h>
+	"test.h"
+
+1730987812 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/list/test/test.c
+	<stdint.h>
+	"test.h"
+
+1730996079 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/container/test/test.h
+	"../container.h"
+	"../../list/list.h"
+
+1730996079 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/list/test/test.h
+	"../list.h"
+	"../../container/container.h"
 
