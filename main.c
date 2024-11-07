@@ -1,4 +1,4 @@
-#include "split_tokens/test/test.h"                                            // заголовочный файл - библиотека
+#include "reader/scaner/split_tokens/test/test.h"                              // заголовочный файл - библиотека
 
 /*
     int main()
@@ -66,5 +66,5 @@ int main()                                                                     /
 	str_free_str(str);                                                         // освобождаем память, выделенную под строку
 	str_free_tokens(tokens, num_tokens);                                       // освобождаем память, выделенную под токены в массиве
 	str_free_tokens2(converted_tokens, num_of_converted_tokens);               // освобождаем память, выделенную под преобразованные токены в массиве
-	return;                                                                    // завершаем выполнение
+	return 0;                                                                  // завершаем выполнение
 }

@@ -2,7 +2,56 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="accbs/test/test.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
+	<File name="data_structures/container/test/test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4125" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="13" />
+			<Collapse line="24" />
+			<Collapse line="35" />
+		</Folding>
+	</File>
+	<File name="data_structures/container/container.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4358" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="0" />
+			<Collapse line="8" />
+			<Collapse line="14" />
+			<Collapse line="20" />
+			<Collapse line="26" />
+			<Collapse line="32" />
+			<Collapse line="38" />
+			<Collapse line="44" />
+		</Folding>
+	</File>
+	<File name="reader/scaner/accbs/test/test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1032" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+		</Folding>
+	</File>
+	<File name="reader/scaner/accbs/accbs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3709" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="0" />
+			<Collapse line="6" />
+			<Collapse line="14" />
+			<Collapse line="20" />
+			<Collapse line="29" />
+			<Collapse line="44" />
+			<Collapse line="53" />
+			<Collapse line="62" />
+		</Folding>
+	</File>
+	<File name="reader/scaner/accbs/test/test.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1558" topLine="0" />
 		</Cursor>
@@ -12,67 +61,89 @@
 			<Collapse line="19" />
 		</Folding>
 	</File>
-	<File name="accbs/test/test.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
+	<File name="data_structures/list/test/test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1032" topLine="0" />
+			<Cursor1 position="4125" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="5" />
+			<Collapse line="6" />
+			<Collapse line="13" />
+			<Collapse line="24" />
+			<Collapse line="35" />
 		</Folding>
 	</File>
-	<File name="split_tokens/test/test.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+	<File name="data_structures/list/list.h" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2438" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="14" />
-			<Collapse line="15" />
-			<Collapse line="19" />
-			<Collapse line="23" />
-			<Collapse line="28" />
-			<Collapse line="38" />
-			<Collapse line="44" />
-			<Collapse line="49" />
-		</Folding>
-	</File>
-	<File name="split_tokens/split_tokens.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19424" topLine="239" />
+			<Cursor1 position="831" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="file_work/test/test.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="20" zoom_2="0">
+	<File name="reader/scaner/split_tokens/split_tokens.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="898" topLine="0" />
+			<Cursor1 position="22989" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="3" />
-			<Collapse line="14" />
-			<Collapse line="20" />
-		</Folding>
-	</File>
-	<File name="file_work/file_work.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="734" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="2" />
-			<Collapse line="14" />
+			<Collapse line="4" />
+			<Collapse line="10" />
 			<Collapse line="17" />
-			<Collapse line="21" />
-			<Collapse line="22" />
+			<Collapse line="25" />
 			<Collapse line="29" />
-			<Collapse line="33" />
+			<Collapse line="31" />
+			<Collapse line="36" />
+			<Collapse line="37" />
 			<Collapse line="40" />
-			<Collapse line="51" />
-			<Collapse line="52" />
-			<Collapse line="58" />
-			<Collapse line="73" />
+			<Collapse line="48" />
+			<Collapse line="67" />
+			<Collapse line="70" />
+			<Collapse line="77" />
+			<Collapse line="80" />
+			<Collapse line="86" />
+			<Collapse line="102" />
+			<Collapse line="110" />
+			<Collapse line="112" />
+			<Collapse line="114" />
+			<Collapse line="122" />
+			<Collapse line="130" />
+			<Collapse line="131" />
+			<Collapse line="138" />
+			<Collapse line="146" />
+			<Collapse line="152" />
+			<Collapse line="158" />
+			<Collapse line="160" />
+			<Collapse line="162" />
+			<Collapse line="163" />
+			<Collapse line="178" />
+			<Collapse line="184" />
+			<Collapse line="190" />
+			<Collapse line="196" />
+			<Collapse line="200" />
+			<Collapse line="205" />
+			<Collapse line="206" />
+			<Collapse line="208" />
+			<Collapse line="216" />
+			<Collapse line="225" />
+			<Collapse line="226" />
+			<Collapse line="233" />
+			<Collapse line="237" />
+			<Collapse line="238" />
+			<Collapse line="239" />
+			<Collapse line="245" />
+			<Collapse line="251" />
+			<Collapse line="256" />
+			<Collapse line="262" />
+			<Collapse line="268" />
+			<Collapse line="276" />
+			<Collapse line="282" />
+			<Collapse line="283" />
+			<Collapse line="286" />
+			<Collapse line="296" />
+			<Collapse line="304" />
+			<Collapse line="310" />
+			<Collapse line="311" />
 		</Folding>
 	</File>
-	<File name="split_tokens/split_tokens.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="reader/scaner/split_tokens/split_tokens.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1513" topLine="39" />
+			<Cursor1 position="9876" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="0" />
@@ -93,9 +164,49 @@
 			<Collapse line="139" />
 		</Folding>
 	</File>
-	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+	<File name="reader/scaner/split_tokens/test/test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3826" topLine="3" />
+			<Cursor1 position="4035" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="14" />
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="23" />
+			<Collapse line="28" />
+			<Collapse line="38" />
+			<Collapse line="44" />
+			<Collapse line="49" />
+		</Folding>
+	</File>
+	<File name="reader/parser/parser.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2358" topLine="96" />
+		</Cursor>
+	</File>
+	<File name="reader/scaner/file_work/file_work.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="8" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5414" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="2" />
+			<Collapse line="14" />
+			<Collapse line="17" />
+			<Collapse line="21" />
+			<Collapse line="22" />
+			<Collapse line="29" />
+			<Collapse line="33" />
+			<Collapse line="40" />
+			<Collapse line="51" />
+			<Collapse line="52" />
+			<Collapse line="58" />
+			<Collapse line="73" />
+		</Folding>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4983" topLine="5" />
 		</Cursor>
 		<Folding>
 			<Collapse line="2" />
@@ -106,32 +217,12 @@
 			<Collapse line="57" />
 		</Folding>
 	</File>
-	<File name="file_work/test/test.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="11" zoom_2="0">
+	<File name="reader/parser/parser.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1570" topLine="0" />
+			<Cursor1 position="913" topLine="17" />
 		</Cursor>
-		<Folding>
-			<Collapse line="0" />
-			<Collapse line="6" />
-			<Collapse line="19" />
-		</Folding>
 	</File>
-	<File name="accbs/accbs.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3703" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="0" />
-			<Collapse line="6" />
-			<Collapse line="14" />
-			<Collapse line="20" />
-			<Collapse line="29" />
-			<Collapse line="44" />
-			<Collapse line="53" />
-			<Collapse line="62" />
-		</Folding>
-	</File>
-	<File name="accbs/accbs.c" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="16" zoom_2="0">
+	<File name="reader/scaner/accbs/accbs.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5271" topLine="0" />
 		</Cursor>
@@ -145,10 +236,50 @@
 			<Collapse line="33" />
 			<Collapse line="41" />
 			<Collapse line="43" />
+			<Collapse line="46" />
 			<Collapse line="54" />
+			<Collapse line="64" />
 		</Folding>
 	</File>
-	<File name="main_common.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
+	<File name="data_structures/list/list.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3614" topLine="182" />
+		</Cursor>
+	</File>
+	<File name="reader/scaner/file_work/file_work.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1080" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="0" />
+			<Collapse line="7" />
+			<Collapse line="18" />
+			<Collapse line="25" />
+			<Collapse line="39" />
+			<Collapse line="52" />
+		</Folding>
+	</File>
+	<File name="reader/scaner/split_tokens/test/test.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="11" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="977" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="0" />
+			<Collapse line="6" />
+			<Collapse line="19" />
+		</Folding>
+	</File>
+	<File name="reader/scaner/file_work/test/test.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="18" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2061" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="14" />
+			<Collapse line="20" />
+		</Folding>
+	</File>
+	<File name="main_common.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3978" topLine="0" />
 		</Cursor>
@@ -166,29 +297,6 @@
 			<Collapse line="67" />
 			<Collapse line="75" />
 			<Collapse line="82" />
-		</Folding>
-	</File>
-	<File name="file_work/file_work.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="12" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2746" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="0" />
-			<Collapse line="7" />
-			<Collapse line="18" />
-			<Collapse line="25" />
-			<Collapse line="39" />
-			<Collapse line="52" />
-		</Folding>
-	</File>
-	<File name="split_tokens/test/test.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="15" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1501" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="0" />
-			<Collapse line="6" />
-			<Collapse line="19" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>
