@@ -1,6 +1,8 @@
 # depslib dependency file v1.0
-1731010969 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1731246417 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"reader/scaner/split_tokens/test/test.h"
+	"reader/parser/test/test.h"
+	"reader/parser/parser.h"
 
 1730665995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
 	"accbs.h"
@@ -65,7 +67,7 @@
 1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/split_tokens/test/test.c
 	"test.h"
 
-1730741528 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main_common.h
+1731175083 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main_common.h
 	<ctype.h>
 	<stdio.h>
 	<stddef.h>
@@ -73,7 +75,6 @@
 	<stdlib.h>
 	<stdbool.h>
 	<string.h>
-	<threads.h>
 
 1730985995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/container/container.c
 	"container.h"
@@ -122,13 +123,13 @@
 	"../container.h"
 	"../../list/list.h"
 
-1730984638 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.h
+1731099865 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.h
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
 	"../container/container.h"
 
-1730984622 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.c
+1731240269 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.c
 	"list.h"
 
 1730987812 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/test/test.c
@@ -179,9 +180,40 @@
 1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/split_tokens/test/test.c
 	"test.h"
 
-1731009343 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
+1731247030 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
 	"parser.h"
 
-1731010991 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
+1731175104 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
+	"../../tests/stack/stack.h"
 	"../../data_structures/list/list.h"
+	"../scaner/split_tokens/split_tokens.h"
+
+1731175368 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.c
+	"test.h"
+
+1731094065 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.h
+	"../parser.h"
+
+1731175083 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.c
+	"common.h"
+
+1731175083 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.h
+	<threads.h>
+
+1731150114 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.c
+	"stack.h"
+
+1731150114 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<stdbool.h>
+	"../common/common.h"
+
+1731150148 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.c
+	"test.h"
+
+1731148142 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.h
+	"../stack.h"
 

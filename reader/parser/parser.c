@@ -36,7 +36,11 @@ Expression *create_expression()
 		return NULL;
 	}
 
-	expression->element = NULL;
+	expression->element_list = create_list();
+	if(expression->element_list == NULL) {
+		free(expression);
+		return NULL;
+	}
 
 	return expression;
 }
@@ -72,9 +76,11 @@ void free_symbol(Symbol *symbol)
 
 	if(symbol->symbol_name != NULL) {
 		free(symbol->symbol_name);
+		symbol->symbol_name = NULL;
 	}
 
 	free(symbol);
+	symbol = NULL;
 }
 
 void free_value(Value *value)
@@ -96,10 +102,7 @@ void free_expression(Expression *expression)
 		return;
 	}
 
-	if(expression->element != NULL) {
-		free_node(expression->element);
-	}
-
+	free_list(expression->element_list);
 	free(expression);
 }
 
@@ -124,13 +127,121 @@ void free_expression_element(ExpressionElement *element)
 	free(element);
 }
 
-Expression *append_to_expression(Expression *expression, Node *input_element)
+int append_to_expression(Expression *expression, ExpressionElement *input_element)
 {
 	if(expression == NULL) {
+		return NO_LIST_ERROR;
+	}
+
+	return append_to_list(expression->element_list, input_element);
+}
+
+Expression *parse(Token **tokens, size_t token_count)
+{
+	Stack *stack = create_stack();
+	if(stack == NULL) {
 		return NULL;
 	}
 
-	expression->element = input_element;
+	Expression *root_expression = create_expression();
+	if(root_expression == NULL) {
+		free_stack(stack);
+		return NULL;
+	}
 
-	return expression;
+	for(size_t i = 0; i < token_count; ++i) {
+		Token *token = tokens[i];
+
+		if(token->token_type == 'LP') {
+			stack_push(stack, root_expression);
+			root_expression = create_expression();
+			if(root_expression == NULL) {
+				free_stack(stack);
+				return NULL;
+			}
+		} else if(token->token_type == 'RP') {
+			if(stack->stack_size == 0) {
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			Expression *prev_expression = stack_pop(stack);
+			if(prev_expression == NULL) {
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			ExpressionElement *element = create_expression_element(ELEMENT_EXPRESSION, root_expression);
+			if(element == NULL) {
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			if(append_to_expression(prev_expression, element) != 0) {
+				free_expression_element(element);
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			root_expression = prev_expression;
+		} else if(token->token_type == 'SYM') {
+			Symbol *symbol = create_symbol((char *)token->token_data);
+			if(symbol == NULL) {
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			ExpressionElement *element = create_expression_element(ELEMENT_SYMBOL, symbol);
+			if(element == NULL) {
+				free_symbol(symbol);
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			if(append_to_expression(root_expression, element) != 0) {
+				free_expression_element(element);
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+		} else if(token->token_type == 'VAL') {
+			int value = atoi((char *)token->token_data);
+			Value *val = create_value(value, NULL);
+			if(val == NULL) {
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			ExpressionElement *element = create_expression_element(ELEMENT_VALUE, val);
+			if(element == NULL) {
+				free_value(val);
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+
+			if(append_to_expression(root_expression, element) != 0) {
+				free_expression_element(element);
+				free_expression(root_expression);
+				free_stack(stack);
+				return NULL;
+			}
+		}
+	}
+
+	if(stack->stack_size != 0) {
+		free_expression(root_expression);
+		free_stack(stack);
+		return NULL;
+	}
+
+	free_stack(stack);
+	return root_expression;
 }

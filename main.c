@@ -1,4 +1,6 @@
 #include "reader/scaner/split_tokens/test/test.h"                              // заголовочный файл - библиотека
+#include "reader/parser/test/test.h"
+#include "reader/parser/parser.h"
 
 /*
     int main()
@@ -62,9 +64,24 @@ int main()                                                                     /
 	str_print_tokens2(converted_tokens, num_of_converted_tokens);              // выводим токены в заданном порядке
 
 
+	/// Разбор токенов и создание выражения:
+	Expression *parsed_expression = parse(converted_tokens, num_of_converted_tokens);
+	if(parsed_expression != NULL) {
+		printf("SUCCESSFUL!!!\n\n");
+	} else {
+		printf("ERROR!!!\n\n");
+		// Освобождаем память, если парсинг не удался
+		str_free_str(str);
+		str_free_tokens(tokens, num_tokens);
+		str_free_tokens2(converted_tokens, num_of_converted_tokens);
+		return ERROR;
+	}
+
+
 	/// Освобождаем память:
 	str_free_str(str);                                                         // освобождаем память, выделенную под строку
 	str_free_tokens(tokens, num_tokens);                                       // освобождаем память, выделенную под токены в массиве
 	str_free_tokens2(converted_tokens, num_of_converted_tokens);               // освобождаем память, выделенную под преобразованные токены в массиве
+	free_expression(parsed_expression);
 	return 0;                                                                  // завершаем выполнение
 }

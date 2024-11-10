@@ -27,7 +27,7 @@ void free_list(List *list)
 		return;
 	}
 
-	while(list->last == NULL) {
+	while(list->last != NULL) {
 		list->last = list->first->next;
 		free_node(list->first);
 		list->first = list->last;
@@ -36,7 +36,7 @@ void free_list(List *list)
 	free(list);
 }
 
-Node *create_node(void *input_data)
+Node *create_node(LIST_DATA_TYPE input_data)
 {
 	Node *node = (Node *)malloc(sizeof(Node));
 	if(node == NULL) {
@@ -54,7 +54,7 @@ void free_node(Node *input_node)
 	free(input_node);
 }
 
-int append_to_list(List *list, int64_t data)
+int append_to_list(List *list, LIST_DATA_TYPE data)
 {
 	if(list == NULL) {
 		return NO_LIST_ERROR;
@@ -104,7 +104,7 @@ Node *get_node_from_list(Node *start_node, size_t index)
 	return current_node;
 }
 
-int get_from_list(List *list, size_t index, int64_t *return_value)
+int get_from_list(List *list, size_t index, LIST_DATA_TYPE *return_value)
 {
 	if(list == NULL) {
 		return NO_LIST_ERROR;
@@ -120,7 +120,7 @@ int get_from_list(List *list, size_t index, int64_t *return_value)
 	return 0;
 }
 
-int insert_to_list(List *list, size_t index, int64_t data)
+int insert_to_list(List *list, size_t index, LIST_DATA_TYPE data)
 {
 	if(list == NULL) {
 		return NO_LIST_ERROR;
@@ -153,7 +153,7 @@ int insert_to_list(List *list, size_t index, int64_t data)
 	return 0;
 }
 
-int prepend_to_list(List *list, int64_t data)
+int prepend_to_list(List *list, LIST_DATA_TYPE data)
 {
 	if(list == NULL) {
 		return NO_LIST_ERROR;
