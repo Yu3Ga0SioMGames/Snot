@@ -46,10 +46,12 @@ struct _expression_element
 
 Expression *create_expression();
 Expression *parse(Token **, size_t);
+Expression *parse2(Token **, size_t);
 
 void free_value(Value *);
 void free_symbol(Symbol *);
 void free_expression(Expression *);
+void print_expression(Expression *, int8_t);
 void free_expression_element(ExpressionElement *);
 
 int append_to_expression(Expression *, ExpressionElement *);

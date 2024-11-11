@@ -65,12 +65,12 @@ int main()                                                                     /
 
 
 	/// Разбор токенов и создание выражения:
-	Expression *parsed_expression = parse(converted_tokens, num_of_converted_tokens);
+	Expression *parsed_expression = parse2(converted_tokens, num_of_converted_tokens);
 	if(parsed_expression != NULL) {
-		printf("SUCCESSFUL!!!\n\n");
+		int8_t depth = 1;
+		print_expression(parsed_expression, depth);
+		printf("\n");
 	} else {
-		printf("ERROR!!!\n\n");
-		// Освобождаем память, если парсинг не удался
 		str_free_str(str);
 		str_free_tokens(tokens, num_tokens);
 		str_free_tokens2(converted_tokens, num_of_converted_tokens);
