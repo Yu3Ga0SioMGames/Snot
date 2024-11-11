@@ -136,11 +136,15 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 {
 	Stack *expression_stack = create_stack();
 	if(expression_stack == NULL) {
+		printf("Error: Failed to create stack.\n\n");
+
 		return NULL;
 	}
 
 	Expression *root_expression = create_expression();
 	if(root_expression == NULL) {
+		printf("Error: Failed to create root expression.\n\n");
+
 		free_stack(expression_stack);
 		return NULL;
 	}
@@ -155,11 +159,15 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 			current_expression = create_expression();
 
 			if(current_expression == NULL) {
+				printf("Error: Failed to create new expression.\n\n");
+
 				free_stack(expression_stack);
 				return NULL;
 			}
 		} else if(token->token_type == 'R') {
 			if(expression_stack->stack_size == 0) {
+				printf("Error: Mismatched parentheses or stack underflow.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
@@ -167,6 +175,8 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 
 			Expression *prev_expression = stack_pop(expression_stack);
 			if(prev_expression == NULL) {
+				printf("Error: Failed to pop previous expression.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
@@ -174,12 +184,16 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 
 			ExpressionElement *element = create_expression_element(ELEMENT_EXPRESSION, current_expression);
 			if(element == NULL) {
+				printf("Error: Failed to create expression element.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
 			}
 
 			if(append_to_expression(prev_expression, element) != 0) {
+				printf("Error: Failed to append expression element.\n\n");
+
 				free_expression_element(element);
 				free_expression(current_expression);
 				free_stack(expression_stack);
@@ -190,6 +204,8 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 		} else if(token->token_type == 'S') {
 			Symbol *symbol = create_symbol((char *)token->token_data);
 			if(symbol == NULL) {
+				printf("Error: Failed to create symbol.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
@@ -197,6 +213,8 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 
 			ExpressionElement *element = create_expression_element(ELEMENT_SYMBOL, symbol);
 			if(element == NULL) {
+				printf("Error: Failed to create symbol element.\n\n");
+
 				free_symbol(symbol);
 				free_expression(current_expression);
 				free_stack(expression_stack);
@@ -204,24 +222,31 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 			}
 
 			if(append_to_expression(current_expression, element) != 0) {
+				printf("Error: Failed to append symbol element.\n\n");
+
 				free_expression_element(element);
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
 			}
 		} else if(token->token_type == 'V') {
-			int value = atoi((char *)token->token_data);                 // преобразуем строку в число
-			Value *val = create_value(sizeof(int), malloc(sizeof(int))); // создаем новое значение с выделенной памятью
+			int value = atoi((char *)token->token_data);                 // Преобразуем строку в число
+
+			Value *val = create_value(sizeof(int), malloc(sizeof(int))); // Создаем новое значение с выделенной памятью
 			if(val == NULL) {
+				printf("Error: Failed to create value.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
 			}
 
-			*(int *)(val->value_data) = value;                           // сохраняем значение по указателю
+			*(int *)(val->value_data) = value;                           // Сохраняем значение по указателю
 
 			ExpressionElement *element = create_expression_element(ELEMENT_VALUE, val);
 			if(element == NULL) {
+				printf("Error: Failed to create value element.\n\n");
+
 				free_value(val);
 				free_expression(current_expression);
 				free_stack(expression_stack);
@@ -229,6 +254,8 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 			}
 
 			if(append_to_expression(current_expression, element) != 0) {
+				printf("Error: Failed to append value element.\n\n");
+
 				free_expression_element(element);
 				free_expression(current_expression);
 				free_stack(expression_stack);
@@ -238,6 +265,8 @@ Expression *parse(Token **converted_tokens, size_t token_count)
 	}
 
 	if(expression_stack->stack_size != 0) {
+		printf("Error: Unbalanced expression or stack inconsistency.\n\n");
+
 		free_expression(current_expression);
 		free_stack(expression_stack);
 		return NULL;
@@ -251,11 +280,15 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 {
 	Stack *expression_stack = create_stack();
 	if(expression_stack == NULL) {
+		printf("Error: Failed to create stack.\n\n");
+
 		return NULL;
 	}
 
 	Expression *root_expression = create_expression();
 	if(root_expression == NULL) {
+		printf("Error: Failed to create root expression.\n\n");
+
 		free_stack(expression_stack);
 		return NULL;
 	}
@@ -268,6 +301,8 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 		if(token->token_type == 'L') {
 			Expression *new_expression = create_expression();
 			if(new_expression == NULL) {
+				printf("Error: Failed to create new expression.\n\n");
+
 				free_stack(expression_stack);
 				return NULL;
 			}
@@ -275,6 +310,8 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 			stack_push(expression_stack, new_expression);
 		} else if(token->token_type == 'R') {
 			if(expression_stack->stack_size < 2) {
+				printf("Error: Mismatched parentheses or stack underflow.\n\n");
+
 				free_stack(expression_stack);
 				return NULL;
 			}
@@ -285,12 +322,16 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 
 			ExpressionElement *element = create_expression_element(ELEMENT_EXPRESSION, current_expression);
 			if(element == NULL) {
+				printf("Error: Failed to create expression element.\n\n");
+
 				free_expression(current_expression);
 				free_stack(expression_stack);
 				return NULL;
 			}
 
 			if(append_to_expression(parent_expression, element) != 0) {
+				printf("Error: Failed to append expression element.\n\n");
+
 				free_expression_element(element);
 				free_expression(current_expression);
 				free_stack(expression_stack);
@@ -299,12 +340,16 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 		} else if(token->token_type == 'S') {
 			Symbol *symbol = create_symbol((char *)token->token_data);
 			if(symbol == NULL) {
+				printf("Error: Failed to create symbol.\n\n");
+
 				free_stack(expression_stack);
 				return NULL;
 			}
 
 			ExpressionElement *element = create_expression_element(ELEMENT_SYMBOL, symbol);
 			if(element == NULL) {
+				printf("Error: Failed to create symbol element.\n\n");
+
 				free_symbol(symbol);
 				free_stack(expression_stack);
 				return NULL;
@@ -312,22 +357,29 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 
 			Expression *current_expression = stack_peek(expression_stack);
 			if(append_to_expression(current_expression, element) != 0) {
+				printf("Error: Failed to append symbol element.\n\n");
+
 				free_expression_element(element);
 				free_stack(expression_stack);
 				return NULL;
 			}
 		} else if(token->token_type == 'V') {
-			int value = atoi((char *)token->token_data);
-			Value *val = create_value(sizeof(int), malloc(sizeof(int)));
+			int value = atoi((char *)token->token_data);                 // Преобразуем строку в число
+
+			Value *val = create_value(sizeof(int), malloc(sizeof(int))); // Создаем новое значение с выделенной памятью
 			if(val == NULL) {
+				printf("Error: Failed to create value.\n\n");
+
 				free_stack(expression_stack);
 				return NULL;
 			}
 
-			*(int *)(val->value_data) = value;
+			*(int *)(val->value_data) = value;                           // Сохраняем значение по указателю
 
 			ExpressionElement *element = create_expression_element(ELEMENT_VALUE, val);
 			if(element == NULL) {
+				printf("Error: Failed to create value element.\n\n");
+
 				free_value(val);
 				free_stack(expression_stack);
 				return NULL;
@@ -335,19 +387,29 @@ Expression *parse2(Token **converted_tokens, size_t token_count)
 
 			Expression *current_expression = stack_peek(expression_stack);
 			if(append_to_expression(current_expression, element) != 0) {
+				printf("Error: Failed to append value element.\n\n");
+
 				free_expression_element(element);
 				free_stack(expression_stack);
 				return NULL;
 			}
+		} else {
+			printf("Error: Unrecognized token type.\n\n");
+
+			free_stack(expression_stack);
+			return NULL;
 		}
 	}
 
 	if(expression_stack->stack_size != 1) {
+		printf("Error: Unbalanced expression or stack inconsistency.\n\n");
+
 		free_stack(expression_stack);
 		return NULL;
 	}
 
 	Expression *root_expression_result = stack_pop(expression_stack);
+
 	free_stack(expression_stack);
 	return root_expression_result;
 }

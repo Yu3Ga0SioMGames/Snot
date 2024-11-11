@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1731359171 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1731362789 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"reader/scaner/split_tokens/test/test.h"
 	"reader/parser/test/test.h"
 	"reader/parser/parser.h"
@@ -180,7 +180,7 @@
 1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/split_tokens/test/test.c
 	"test.h"
 
-1731359263 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
+1731362756 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
 	"parser.h"
 
 1731359136 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
