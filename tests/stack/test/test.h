@@ -1,9 +1,11 @@
 #ifndef TEST_H_INCLUDED
 
+/// Начинаем условную компиляцию:
+
 #define TEST_H_INCLUDED
 
-#include "../stack.h"
+#include "../stack.h" // подключаем заголовочный файл для работы со стеком
 
-int stack_test();
+int stack_test();     // объявление функции для тестирования стека
 
-#endif
+#endif                // завершаем условную компиляцию

@@ -2,7 +2,7 @@
 
 int test_parser()
 {
-	// Пример использования с массивом токенов
+	/// Пример использования с массивом токенов:
 	Token tokens[] = {
 		{'(', NULL},
 		{'[', NULL},
@@ -13,7 +13,7 @@ int test_parser()
 	};
 	size_t token_count = sizeof(tokens) / sizeof(tokens[0]);
 
-	// Преобразуем массив в массив указателей на токены
+	/// Преобразуем массив в массив указателей на токены:
 	Token *token_ptrs[token_count];
 	for(size_t i = 0; i < token_count; ++i) {
 		token_ptrs[i] = &tokens[i];
@@ -26,7 +26,7 @@ int test_parser()
 		printf("Ошибка при разборе выражения.\n");
 	}
 
-	// Освобождаем память
+	/// Освобождаем память:
 	free_expression(parsed_expression);
 
 	return 0;

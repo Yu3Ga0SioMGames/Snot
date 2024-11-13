@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1731362789 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1731440395 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"reader/scaner/split_tokens/test/test.h"
+	"reader/scaner/console_io/console_io.h"
 	"reader/parser/test/test.h"
 	"reader/parser/parser.h"
 
@@ -123,13 +124,13 @@
 	"../container.h"
 	"../../list/list.h"
 
-1731099865 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.h
+1731507241 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.h
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
 	"../container/container.h"
 
-1731240269 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.c
+1731508097 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/list.c
 	"list.h"
 
 1730987812 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/data_structures/list/test/test.c
@@ -163,7 +164,7 @@
 1730754558 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/file_work/file_work.c
 	"file_work.h"
 
-1731010598 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/file_work/test/test.c
+1731415375 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/file_work/test/test.c
 	"test.h"
 
 1730757784 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/split_tokens/test/test.h
@@ -188,22 +189,22 @@
 	"../../data_structures/list/list.h"
 	"../scaner/split_tokens/split_tokens.h"
 
-1731175368 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.c
+1731441779 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.c
 	"test.h"
 
-1731094065 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.h
+1731441667 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/test/test.h
 	"../parser.h"
 
-1731175083 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.c
+1731441508 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.c
 	"common.h"
 
-1731175083 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.h
+1731441388 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/common/common.h
 	<threads.h>
 
-1731150114 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.c
+1731509519 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.c
 	"stack.h"
 
-1731150114 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.h
+1731508433 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/stack.h
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -211,9 +212,28 @@
 	<stdbool.h>
 	"../common/common.h"
 
-1731150148 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.c
+1731442166 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.c
 	"test.h"
 
-1731148142 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.h
+1731441905 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/tests/stack/test/test.h
 	"../stack.h"
+
+1731429967 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/console_io/test/console_io.c
+	"test.h"
+
+1731438853 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/console_io/test/test.h
+	"../console_io.h"
+
+1731441194 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/console_io/console_io.h
+	"../accbs/accbs.h"
+	"../../../main_common.h"
+
+1731440310 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/console_io/console_io.c
+	"console_io.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1731440108 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/console_io/test/test.c
+	"test.h"
 

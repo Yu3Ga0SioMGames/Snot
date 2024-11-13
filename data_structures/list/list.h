@@ -1,5 +1,6 @@
 #ifndef LIST_H_INCLUDED
 
+/// Начало:
 
 #define LIST_H_INCLUDED
 
@@ -8,15 +9,17 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "../container/container.h"
+#include "../container/container.h" // включаем заголовочный файл контейнера
 
 
+/// Определяем коды ошибок:
 #define ND_CREATE_ERROR 1
 #define BAD_POS_ERROR (ND_CREATE_ERROR + 1)
 #define NO_LIST_ERROR (BAD_POS_ERROR + 1)
 
 #define LIST_DATA_TYPE void *
 
+/// Структура узла списка:
 typedef
 struct _node
 {
@@ -24,16 +27,18 @@ struct _node
 	struct _node *next;
 } Node;
 
+/// Структура самого списка:
 typedef
-struct
+struct _list
 {
-	ContainerMTable mtbl;
-	size_t length;
-	Node *first;
-	Node *last;
+	ContainerMTable mtbl;           // таблица методов для контейнера
+	size_t length;                  // длина списка
+	Node *first;                    // указатель на первый узел
+	Node *last;                     // указатель на последний узел
 } List;
 
 
+/// Прототипы функций для работы со списком:
 List *create_list();
 
 void free_list(List *);
@@ -52,4 +57,4 @@ int insert_to_list(List *, size_t, LIST_DATA_TYPE);
 int get_from_list(List *, size_t, LIST_DATA_TYPE *);
 
 
-#endif
+#endif                               // конец

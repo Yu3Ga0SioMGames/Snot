@@ -1,6 +1,9 @@
 #ifndef COMMON_H_INCLUDED
 
 
+// начало
+
+
 #define COMMON_H_INCLUDED
 
 
@@ -12,14 +15,14 @@
 #include <threads.h>
 
 
-#define BAD_ALLOC_ERROR 1
-#define CONTAINER_NOT_PROVIDED (BAD_ALLOC_ERROR + 1)
-#define CONTAINER_IS_EMPTY (CONTAINER_NOT_PROVIDED + 1)
+#define BAD_ALLOC_ERROR 1                               // ошибка недостаточного выделения памяти
+#define CONTAINER_NOT_PROVIDED (BAD_ALLOC_ERROR + 1)    // ошибка отсутствия контейнера
+#define CONTAINER_IS_EMPTY (CONTAINER_NOT_PROVIDED + 1) // ошибка пустого контейнера
 
-#define STACK_DATA_TYPE void *
-
-
-extern thread_local int container_error;
+#define STACK_DATA_TYPE void *                          // определение типа данных для стека как указателя на void
 
 
-#endif
+extern thread_local int container_error;                // объявление локальной переменной потока для хранения ошибки контейнера
+
+
+#endif                                                  // конец
