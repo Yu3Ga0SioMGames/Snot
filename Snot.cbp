@@ -59,6 +59,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="reader/parser/test/test.h" />
+		<Unit filename="reader/reader.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="reader/reader.h" />
 		<Unit filename="reader/scaner/accbs/accbs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -91,6 +95,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="reader/scaner/split_tokens/test/test.h" />
+		<Unit filename="reader/test/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="reader/test/test.h" />
 		<Unit filename="tests/common/common.c">
 			<Option compilerVar="CC" />
 		</Unit>

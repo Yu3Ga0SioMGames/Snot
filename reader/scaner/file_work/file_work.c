@@ -11,15 +11,13 @@
         1.) Указатель "file_path" для хранения пути к файлу;
         2.) Размер буфера файла по пути;
 */
-void str_get_file_path(char *file_path, size_t file_size)
+void str_get_file_path(char *file_path)
 {
-	printf("\nEnter File Path: ");  // печать
-
 	/*
 	    Используем функцию "fgets" для чтения строки из стандартного ввода("stdin") и сохранения ее в file_path;
 	    Чтение происходит до тех пор, пока не достигнута максимальная длина (file_size) или не встретится символ новой строки:
 	*/
-	if(fgets(file_path, file_size, stdin) != NULL) {
+	if(file_path != NULL) {
 		/*
 		    Если возвращено не NULL,
 		    то вычисляем размер-длину(В нашем случаи) введенной строки в файле с помощью функции "strlen"

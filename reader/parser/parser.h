@@ -1,64 +1,79 @@
 #ifndef PARSER_H_INCLUDED
 
+/// Защита от двойного включения заголовочного файла:
+
 #define PARSER_H_INCLUDED
 
 
-#include "../../tests/stack/stack.h"
-#include "../../data_structures/list/list.h"
-#include "../scaner/split_tokens/split_tokens.h"
+#include <limits.h>
+#include <stdbool.h>
 
 
-#define ELEMENT_SYMBOL 0
-#define ELEMENT_VALUE 1
-#define ELEMENT_EXPRESSION 2
+#include "../../tests/stack/stack.h"                               // подключаем заголовочный файл для работы с стеком
+#include "../../data_structures/list/list.h"                       // подключаем заголовочный файл для работы со списками
+#include "../scaner/split_tokens/split_tokens.h"                   // подключаем заголовочный файл для работы с разбивкой на токены
+
+
+#define ELEMENT_SYMBOL 0                                           // символический элемент
+#define ELEMENT_VALUE 1                                            // элемент значения
+#define ELEMENT_EXPRESSION 2                                       // элемент выражения
 
 
 typedef
-struct _symbol
+struct _symbol                                                     // структура для символов
 {
-	char *symbol_name;
+	char *symbol_name;                                             // имя символа
 } Symbol;
 
 typedef
-struct _value
+struct _value                                                      // структура для значений
 {
-	uint64_t value_type;
-	void *value_data;
+	uint64_t value_type;                                           // тип значения
+	void *value_data;                                              // данные значения
 } Value;
 
 typedef
-struct _expression
+struct _expression                                                 // структура для выражений
 {
-	List *element_list;
+	List *element_list;                                            // список элементов выражения
+	bool is_complete;                                              // переменная для проверки завершенности выражения
 } Expression;
 
 typedef
-struct _expression_element
+struct _expression_element                                         // структура для элементов выражения
 {
-	uint64_t expression_element_type;
+	uint64_t expression_element_type;                              // тип элемента выражения
 	union {
-		Symbol symbol;
-		Value value;
-		Expression expression;
+		Symbol symbol;                                             // символ
+		Value value;                                               // значение
+		Expression expression;                                     // вложенное выражение
 	};
 } ExpressionElement;
 
 
-Expression *create_expression();
-Expression *parse(Token **, size_t);
-Expression *parse2(Token **, size_t);
+Symbol *create_symbol(char *);                                     // создание нового символа
 
-void free_value(Value *);
-void free_symbol(Symbol *);
-void free_expression(Expression *);
-void print_expression(Expression *, int8_t);
-void free_expression_element(ExpressionElement *);
+Expression *create_expression();                                   // создание нового выражения
+Expression *parse(Token **, size_t, Expression *);                 // функция разбора токенов в выражение
 
-int append_to_expression(Expression *, ExpressionElement *);
+Value *create_value(uint64_t, void *);                             // создание нового значения
 
-Symbol *create_symbol(char *);
-Value *create_value(uint64_t, void *);
-ExpressionElement *create_expression_element(uint64_t, void *);
+char *tokens_to_string(Token **, size_t);                          // функция для преобразования массива токенов в строку
+
+bool is_matching_pair(char, char);                                 // проверяем соответствия пары символов(Скобок)
+bool is_expression_complete(const char *);                         // проверяем завершено ли выражение
+
+void free_value(Value *);                                          // освобождение памяти, выделенной под значение
+void free_symbol(Symbol *);                                        // освобождение памяти, выделенной под символ
+void free_expression(Expression *);                                // освобождение памяти, выделенной под выражение
+void print_expression(Expression *, long long, char *);                    // печать выражения
+void free_expression_element(ExpressionElement *);                 // освобождение памяти, выделенной под элемент выражения
+void restore_expression_stack(Stack *, Expression *);              // функция для восстановления стека выражений
+
+int append_to_expression(Expression *, ExpressionElement *);       // добавление элемента к выражению
+
+ExpressionElement *create_expression_element(uint64_t, void *);    // создание нового элемента выражения
+ExpressionElement *create_expression_element_from_token(Token *);  // функция для создания элемента выражения из токена
 
 
-#endif
+#endif                                                             // завершение защиты от двойного включения

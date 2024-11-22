@@ -235,3 +235,8 @@ int delete_from_list(List *list, size_t index)
 
 	return 0;
 }
+
+int delete_last_from_list(List *list)
+{
+	delete_from_list(list, list->length - 1);
+}

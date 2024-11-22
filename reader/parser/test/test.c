@@ -19,7 +19,7 @@ int test_parser()
 		token_ptrs[i] = &tokens[i];
 	}
 
-	Expression *parsed_expression = parse(token_ptrs, token_count);
+	Expression *parsed_expression = parse(token_ptrs, token_count, NULL);
 	if(parsed_expression != NULL) {
 		printf("Разбор выражения успешен.\n");
 	} else {

@@ -14,7 +14,7 @@
 char *test_file_work()
 {
 	char file_path[FILE_SIZE];                       // сохраняем путь к файлу(Размер массива задается макросом "FILE_SIZE")
-	str_get_file_path(file_path, sizeof(file_path)); // вводим путь к файлу и сохраняем его в массив "file_path"
+	str_get_file_path(file_path);                    // вводим путь к файлу и сохраняем его в массив "file_path"
 
 	/// читаем содержимое файла по указанному пути "file_path" и возвращаем указатель на строку "str"
 	char *str = str_read_file(file_path);
