@@ -173,8 +173,6 @@ void print_expression(Expression *expression, long long depth, char *text)
 
 		current = current->next;
 	}
-
-	printf("\n");
 }
 
 char *tokens_to_string(Token **tokens, size_t num_tokens)                                // функция для преобразования массива токенов в строку
@@ -250,8 +248,6 @@ void restore_expression_stack(Stack *stack, Expression *incomplete_expression)
 		return;                                                                          // возвращаемся, если стек или выражение пустые
 	}
 
-	print_expression(incomplete_expression, 1, "before restored");
-
 	stack_push(stack, incomplete_expression);                                            // помещаем незавершенное выражение в стек
 
 	while(list_length(((Expression *)(stack_peek(stack)))->element_list)) {
@@ -304,15 +300,6 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 	}
 
 	/// Создаем корневое выражение:
-	/*
-	    Expression *root_expression;
-
-	    if(incomplete_expression != NULL) {
-	        root_expression = incomplete_expression;
-	    } else {
-	        root_expression = create_expression();
-	    }
-	*/
 	Expression *root_expression = incomplete_expression ?
 	                              incomplete_expression : create_expression();
 
@@ -413,7 +400,7 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 			if(*endptr != '\0') {
 				printf("Error!!! Invalid Value!!!\n\n");
 
-				root_expression->is_complete = false;
+				root_expression->is_complete = true;
 
 				return incomplete_expression;
 			}
@@ -458,8 +445,6 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 	}
 
 	root_expression = collect_expression_stack(expression_stack);
-
-	print_expression(root_expression, 1, "parse_result");
 
 	free_stack(expression_stack);
 	return root_expression;

@@ -55,6 +55,7 @@ int delete_from_list(List *, size_t);
 int prepend_to_list(List *, LIST_DATA_TYPE);
 int insert_to_list(List *, size_t, LIST_DATA_TYPE);
 int get_from_list(List *, size_t, LIST_DATA_TYPE *);
+int delete_last_from_list(List *);
 
 
 #endif                               // конец

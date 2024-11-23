@@ -17,7 +17,6 @@ char *input()
 	size_t input_length = 0;                                         // длина текущего ввода
 	char temp_buffer[512];                                           // временный буфер для хранения введенной строки
 
-
 	while(1) {
 		if(fgets(temp_buffer, sizeof(temp_buffer), stdin) == NULL) { // читаем строку из ввода
 			free(buffer);                                            // освобождаем память в случае ошибки

@@ -16,11 +16,9 @@ Expression *reader(Expression *incomplete_expression)
 			return incomplete_expression;
 		} else {
 			incomplete_expression = create_expression();
-			/*
-			if() {
-			    ;
-			}
-			*/
+
+			incomplete_expression->is_complete = true;
+
 			return incomplete_expression;
 		}
 	}
@@ -56,12 +54,10 @@ Expression *reader(Expression *incomplete_expression)
 			long long depth = 1;
 			print_expression(parsed_expression, depth, NULL);
 
-			printf("\n");
-
 			incomplete_expression = NULL;                         // сбрасываем указатель на незавершенное выражение
 		}
 
-		incomplete_expression = parsed_expression;            // сохраняем незавершенное выражение
+		incomplete_expression = parsed_expression;                // сохраняем незавершенное выражение
 	}
 
 	str_free_str(str);

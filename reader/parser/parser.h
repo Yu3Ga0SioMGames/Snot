@@ -66,9 +66,8 @@ bool is_expression_complete(const char *);                         // прове
 void free_value(Value *);                                          // освобождение памяти, выделенной под значение
 void free_symbol(Symbol *);                                        // освобождение памяти, выделенной под символ
 void free_expression(Expression *);                                // освобождение памяти, выделенной под выражение
-void print_expression(Expression *, long long, char *);                    // печать выражения
 void free_expression_element(ExpressionElement *);                 // освобождение памяти, выделенной под элемент выражения
-void restore_expression_stack(Stack *, Expression *);              // функция для восстановления стека выражений
+void print_expression(Expression *, long long, char *);            // печать выражения
 
 int append_to_expression(Expression *, ExpressionElement *);       // добавление элемента к выражению
 
