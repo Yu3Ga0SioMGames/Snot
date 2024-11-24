@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1732396392 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1732447439 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"reader/reader.h"
 
 1730665995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
@@ -178,7 +178,7 @@
 1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/split_tokens/test/test.c
 	"test.h"
 
-1732381268 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
+1732446901 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
 	"parser.h"
 
 1732378049 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
@@ -242,12 +242,12 @@
 1732110225 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/test/test.h
 	"../parser/parser.h"
 
-1732375208 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/reader.h
+1732447439 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/reader.h
 	"scaner/split_tokens/test/test.h"
 	"scaner/console_io/console_io.h"
 	"parser/test/test.h"
 	"parser/parser.h"
 
-1732380527 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/reader.c
+1732443518 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/reader.c
 	"reader.h"
 

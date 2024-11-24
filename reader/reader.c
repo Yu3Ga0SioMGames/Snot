@@ -3,9 +3,15 @@
 const char empty[] = "";
 
 /// Один из этапов создания Своего Языка Программирования:
-Expression *reader(Expression *incomplete_expression)
+Expression *reader(Expression *incomplete_expression, char *file_path)
 {
-	char *str = input();                                          // читаем строку ввода
+	char *str = NULL;
+
+	if(file_path != NULL) {
+		str = file_path;
+	} else {
+		str = input();                                            // читаем строку ввода
+	}
 
 	if(str == NULL || strlen(str) == 0) {                         // проверка на окончание ввода или пустую строку
 		if(feof(stdin)) {

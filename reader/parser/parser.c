@@ -400,7 +400,7 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 			if(*endptr != '\0') {
 				printf("Error!!! Invalid Value!!!\n\n");
 
-				root_expression->is_complete = true;
+				root_expression->is_complete = false;
 
 				return incomplete_expression;
 			}
