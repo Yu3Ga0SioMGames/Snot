@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1732447439 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
+1732662562 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/main.c
 	"reader/reader.h"
+	"libmap/map.h"
+	"printer/printer.h"
+	"evaluator/evaluator.h"
 
 1730665995 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/Accbs/accbs.c
 	"accbs.h"
@@ -178,11 +181,13 @@
 1730762201 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/scaner/split_tokens/test/test.c
 	"test.h"
 
-1732446901 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
+1732661800 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.c
 	"parser.h"
 
-1732378049 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
+1732661800 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/parser/parser.h
+	<errno.h>
 	<limits.h>
+	<stdlib.h>
 	<stdbool.h>
 	"../../tests/stack/stack.h"
 	"../../data_structures/list/list.h"
@@ -250,4 +255,56 @@
 
 1732443518 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/reader/reader.c
 	"reader.h"
+
+1732662562 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/evaluator/evaluator.c
+	"evaluator.h"
+
+1732662048 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/evaluator/evaluator.h
+	"../libmap/map.h"
+	"../main_common.h"
+	"../reader/reader.h"
+	"../reader/parser/parser.h"
+
+1732483224 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/evaluator/test/test.c
+	"test.h"
+
+1732466082 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/evaluator/test/test.h
+	"../evaluator.h"
+
+1732648442 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/map.c
+	"map.h"
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+
+1732648450 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/map.h
+	<stdbool.h>
+
+1732491795 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/test/test.h
+	"../map.h"
+	"../../printer/printer.h"
+
+1732491862 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/test/test.c
+	"test.h"
+
+1732662505 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/printer/printer.c
+	"printer.h"
+
+1732491833 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/printer/test/test.c
+	"test.h"
+
+1732491881 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/printer/test/test.h
+	"../printer.h"
+	"../../libmap/map.h"
+
+1732484632 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/printer/printer.h
+	"../evaluator/evaluator.h"
+	"../evaluator/test/test.h"
+
+1732648294 /home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/strmap.h
+	<stdlib.h>
+	<string.h>
+
+1732647314 source:/home/yu3ga0siomgames/PROJECTS/PROGRAMMING/PROGRAMS/Snot/libmap/strmap.c
+	"strmap.h"
 

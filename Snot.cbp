@@ -47,10 +47,26 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="data_structures/list/test/test.h" />
+		<Unit filename="evaluator/evaluator.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="evaluator/evaluator.h" />
+		<Unit filename="evaluator/test/test.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="evaluator/test/test.h" />
+		<Unit filename="libmap/map.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="libmap/map.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main_common.h" />
+		<Unit filename="printer/printer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="printer/printer.h" />
 		<Unit filename="reader/parser/parser.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -16,15 +16,15 @@ Symbol *create_symbol(char *input_name)
 	return symbol;                                                                       // возвращение указателя на созданный символ
 }
 
-Value *create_value(uint64_t input_type, void *input_data)
+ValueToken *create_value_token(uint64_t value_type, void *value_data)
 {
-	Value *value = (Value *)malloc(sizeof(Value));                                       // выделение памяти для структуры "Value"
+	ValueToken *value = (ValueToken *)malloc(sizeof(ValueToken));                        // выделение памяти для структуры "Value"
 	if(value == NULL) {
 		return NULL;                                                                     // проверка успешности выделения памяти
 	}
 
-	value->value_type = input_type;                                                      // установка типа значения
-	value->value_data = input_data;                                                      // установка данных значения
+	value->value_type = value_type;                                                      // установка типа значения
+	value->value_data = value_data;                                                      // установка данных значения
 
 	return value;                                                                        // возвращение указателя на созданное значение
 }
@@ -60,7 +60,7 @@ ExpressionElement *create_expression_element(uint64_t input_expression_element_t
 
 		break;
 	case ELEMENT_VALUE:
-		element->value = *((Value *)input_data);                                         // установка значения
+		element->value = *((ValueToken *)input_data);                                    // установка значения
 
 		break;
 	case ELEMENT_EXPRESSION:
@@ -86,14 +86,14 @@ void free_symbol(Symbol *symbol)
 	free(symbol);                                                                        // освобождение памяти, выделенной под символ
 }
 
-void free_value(Value *value)
+void free_value_token(ValueToken *value)
 {
 	if(value == NULL) {
 		return;                                                                          // проверка на "NULL"
 	}
 
 	if(value->value_data != NULL) {
-		free(value->value_data);                                                         // освобождение памяти, выделенной под данные значения
+		// free(value->value_data);                                                      // освобождение памяти, выделенной под данные значения
 	}
 
 	free(value);                                                                         // освобождение памяти, выделенной под значение
@@ -120,7 +120,7 @@ void free_expression_element(ExpressionElement *element)
 		free_symbol(&(element->symbol));                                                 // освобождение символа
 		break;
 	case ELEMENT_VALUE:
-		free_value(&(element->value));                                                   // освобождение значения
+		free_value_token(&(element->value));                                                   // освобождение значения
 		break;
 	case ELEMENT_EXPRESSION:
 		free_expression(&(element->expression));                                         // освобождение подвыражения
@@ -159,14 +159,13 @@ void print_expression(Expression *expression, long long depth, char *text)
 			printf("Symbol: %s\n", element->symbol.symbol_name);
 			break;
 		case ELEMENT_VALUE:
-			/// Предполагаем, что элемент значения может быть не только "int"
-			printf("Value: %lld\n", *(long long *)element->value.value_data);            // используем тип "long long" для вывода
+			printf("Value:  %d\n", (int)(element->value.value_data));                    // используем тип "int" для вывода
 
 			break;
 		case ELEMENT_EXPRESSION:
 			printf("Expression:\n");
 
-			print_expression(&element->expression, depth + 1, NULL);                           // рекурсивный вызов для подвыражений с увеличением "depth"
+			print_expression(&element->expression, depth + 1, NULL);                     // рекурсивный вызов для подвыражений с увеличением "depth"
 
 			break;
 		}
@@ -395,7 +394,12 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 		} else if (token->token_type == 'V') {                                           // обрабатываем значение
 			char *endptr;
 
-			long long value = strtoll((char *)token->token_data, &endptr, 10);
+			errno = 0;
+			int value = strtoll((char *)token->token_data, &endptr, 10);
+			if(errno != 0) {
+				printf("Only Integers Supported, Using 0 For Now!!!\n\n");
+				value = 0;
+			}
 
 			if(*endptr != '\0') {
 				printf("Error!!! Invalid Value!!!\n\n");
@@ -405,7 +409,7 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 				return incomplete_expression;
 			}
 
-			Value *val = create_value(sizeof(long long), malloc(sizeof(long long)));
+			ValueToken *val = create_value_token(VALUE_TOKEN_TYPE_INTEGER, value);
 			if(val == NULL) {
 				printf("Error!!! Failed To Create Value!!!\n\n");
 
@@ -414,15 +418,13 @@ Expression *parse(Token **converted_tokens, size_t token_count, Expression *inco
 				return incomplete_expression;
 			}
 
-			*(long long *)(val->value_data) = value;
-
 			ExpressionElement *element = create_expression_element(ELEMENT_VALUE, val);
 			if(element == NULL) {
 				printf("Error!!! Failed To Create Value Element!!!\n\n");
 
 				root_expression->is_complete = false;
 
-				free_value(val);
+				free_value_token(val);
 				return incomplete_expression;
 			}
 

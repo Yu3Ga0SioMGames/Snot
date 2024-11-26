@@ -1,7 +1,18 @@
 #include "reader/reader.h"                                                     // подключаем заголовочный файл
 
+#include "libmap/map.h"
+#include "printer/printer.h"
+#include "evaluator/evaluator.h"
+
 int main(int argcount, char *argvalues[])
 {
+	variables = map_create();
+	if(variables == NULL) {
+		printf("Error: Unable To Initialize Map!!!\n\n");
+
+		return 0;
+	}
+
 	Expression *incomplete_expression = NULL;                                  // указатель для хранения незавершенного выражения
 
 	if(argcount > 1) {                                                         // проверяем, передан ли путь к файлу в аргументах
@@ -33,12 +44,31 @@ int main(int argcount, char *argvalues[])
 		} else if(list_length(result_expression->element_list) == 0) {
 			free_expression(result_expression);
 			incomplete_expression = NULL;
+		} else {
+			for(size_t i = 0; i < result_expression->element_list->length; ++i) {
+				ExpressionElement *current = NULL;
+				int rc = get_from_list(result_expression->element_list, i, &current);
+				if(rc != 0) {
+					rc = 0;
+				}
+
+				Value *result = eval(current);
+				if(result != NULL) {
+					print_value(result);
+
+					/// free_value(result);
+				} else {
+					printf("No Result Or Invalid Expression!!!\n\n");
+				}
+			}
 		}
 	}
 
 	if(incomplete_expression != NULL) {
 		free_expression(incomplete_expression);                                // освобождаем память, выделенную под незавершенное выражение
 	}
+
+	map_destroy(variables);                                                    // освобождаем память, выделенную под карту переменных
 
 	printf("\n");
 
