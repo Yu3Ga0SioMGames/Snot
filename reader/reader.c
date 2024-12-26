@@ -2,16 +2,16 @@
 
 const char empty[] = "";
 
+List *scan(FILE *in)
+{
+    char *str = input(in);
+    str_split_str();
+}
+
 /// Один из этапов создания Своего Языка Программирования:
 Expression *reader(Expression *incomplete_expression, char *file_path)
 {
-	char *str = NULL;
-
-	if(file_path != NULL) {
-		str = file_path;
-	} else {
-		str = input();                                            // читаем строку ввода
-	}
+	char *str = input();
 
 	if(str == NULL || strlen(str) == 0) {                         // проверка на окончание ввода или пустую строку
 		if(feof(stdin)) {

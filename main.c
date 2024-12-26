@@ -4,6 +4,13 @@
 #include "printer/printer.h"
 #include "evaluator/evaluator.h"
 
+#define PROMPT_COMPLETE ">>>"
+#define PROMPT_INCOMPLETE ">.."
+
+void repl(FILE *in, FILE *out, FILE *err);
+
+void print_prompt(bool complete);
+
 int main(int argcount, char *argvalues[])
 {
 	variables = map_create();
@@ -73,4 +80,44 @@ int main(int argcount, char *argvalues[])
 	printf("\n");
 
 	return 0;                                                                  // завершаем выполнение
+}
+
+void repl(FILE *input, FILE *output, FILE *error)
+{
+    bool expr_complete = true;
+
+    while(has_no_input(input))
+    {
+        print_prompt(expr_complete);
+
+        Expression *expr = read(input);
+        expr_complete = expr->is_complete;
+
+        Value *value = eval(expr);
+
+        print(value);
+    }
+}
+
+void print_prompt(bool complete)
+{
+    if(complete) {
+        printf(PROMPT_COMPLETE);
+    } else {
+        printf(PROMPT_INCOMPLETE);
+    }
+}
+
+Expression *read(FILE *input)
+{
+    List *tokens = scan(input);
+    Expression *expr = parse(tokens);
+    free_list(tokens);
+
+    return expr;
+}
+
+List *scan(FILE *input)
+{
+
 }
