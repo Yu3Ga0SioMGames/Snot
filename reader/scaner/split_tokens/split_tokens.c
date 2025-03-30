@@ -15,6 +15,25 @@ bool str_is_matching_pair(char open, char close)          // используе�
 	return false;                                         // вернуть "false", если соответствие не найдено
 }
 
+List *tokenize(const char *str)
+{
+    char *current_token = "";
+    List *token_list = create_list();
+	for(size_t i = 0; str[i] != '\0'; ++i) {
+		if(is_pre_terminating(str[i]) && current_token != "") {
+            str_
+            append_to_list(token_list, str_create_token(?, current_token));
+		}
+		if(is_collectable(str[i])) {
+            current_token ;
+        }
+        if(is_post_interrupt(str[i])) {
+            append_to_list(token_list, str_create_token(?, current_token));
+            current_token = "";
+        }
+	}
+}
+
 /*
     Принцып работы и смысл данной функции:
         Проверяем соответствие открывающей и закрывающей скобок;

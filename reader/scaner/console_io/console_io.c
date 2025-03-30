@@ -4,46 +4,39 @@
 #include <stdlib.h>                                                  // подключаем библиотеку для работы с памятью
 #include <string.h>                                                  // подключаем библиотеку для работы со строками
 
-#define INITIAL_SIZE 1024                                            // определяем начальный размер буфера
+#include "../../../data_structures/container/container.h"
 
-char *input()
+char *input(FILE *input_file)
 {
-	size_t buffer_size = INITIAL_SIZE;                               // начальный размер буфера
-	char *buffer = malloc(buffer_size);                              // выделяем память для буфера
-	if(buffer == NULL) {                                             // проверяем, успешно ли выделена память
-		return NULL;                                                 // если не успешно, возвращаем "NULL"
+	size_t buffer_size = 1024;
+	size_t free_size = buffer_size;
+
+	char *input_buffer = (char *)malloc(buffer_size);
+	if(input_buffer == NULL) { // проверяем, успешно ли выделена память
+		// TODO: SIGNAL_ERROR
+		return NULL;           // если не успешно, возвращаем "NULL"
 	}
 
-	size_t input_length = 0;                                         // длина текущего ввода
-	char temp_buffer[512];                                           // временный буфер для хранения введенной строки
+	size_t elements_count = 0;
+	size_t read_count = 0;
 
-	while(1) {
-		if(fgets(temp_buffer, sizeof(temp_buffer), stdin) == NULL) { // читаем строку из ввода
-			free(buffer);                                            // освобождаем память в случае ошибки
-			return NULL;                                             // возвращаем "NULL"
+	const size_t element_size = sizeof(char);
+
+	while((read_count = fread(input_buffer + elements_count * element_size,
+	                          element_size,
+	                          free_size / element_size,
+	                          input_file)) != 0) {
+		free_size -= read_count;
+		elements_count += read_count;
+
+		if(free_size < element_size) {
+			input_buffer = (char *)realloc(input_buffer, buffer_size * 2);
+			free_size += buffer_size;
+			buffer_size *= 2;
 		}
-
-		size_t temp_length = strlen(temp_buffer);                    // определяем длину временной строки
-
-		if(temp_length == 1 && temp_buffer[0] == '\n') {             // проверяем, является ли введенная строка пустой(Только символ новой строки)
-			break;                                                   // выходим из цикла, если введена пустая строка
-		}
-
-		if(input_length + temp_length + 1 > buffer_size) {           // проверяем, нужно ли увеличить размер буфера
-			buffer_size = input_length + temp_length + 1;            // увеличиваем размер буфера до нового размера
-			char *new_buffer = realloc(buffer, buffer_size);         // перевыделяем память для буфера
-			if(new_buffer == NULL) {                                 // проверяем, успешно ли перевыделена память
-				free(buffer);                                        // освобождаем старый буфер в случае ошибки
-				return NULL;                                         // возвращаем "NULL"
-			}
-
-			buffer = new_buffer;                                     // обновляем указатель на буфер
-		}
-
-		strcpy(buffer + input_length, temp_buffer);                  // копируем временную строку в основной буфер
-		input_length += temp_length;                                 // увеличиваем длину текущего ввода
 	}
 
-	buffer[input_length] = '\0';                                     // завершаем строку нулевым символом
-	return buffer;                                                   // возвращаем указатель на буфер
+	*(input_buffer + elements_count * element_size) = 0;
+
+	return input_buffer;
 }
